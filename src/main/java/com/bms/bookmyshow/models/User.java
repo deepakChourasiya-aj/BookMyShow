@@ -17,5 +17,5 @@ public class User extends BaseModel{
 
     @OneToMany
     private List<Booking> bookings;
-    // THESE ARE BEARMINI REQ WE CAN ADD WHATEVER MORE WE WANT..
+    // THESE ARE MINI REQ WE CAN ADD WHATEVER MORE WE WANT
 }

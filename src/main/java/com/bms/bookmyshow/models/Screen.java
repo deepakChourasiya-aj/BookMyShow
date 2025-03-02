@@ -24,5 +24,4 @@ public class Screen extends BaseModel{
     1        M
  SCREEN  -  SEAT => 1 : M
     1        1
-
  */
