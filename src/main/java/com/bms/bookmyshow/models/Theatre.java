@@ -1,6 +1,9 @@
 package com.bms.bookmyshow.models;
 
+
 import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,7 +17,11 @@ public class Theatre extends BaseModel{
     // NAME,CITY,REGION,LIST OF SCREENS,THREATRE ID,EXCAT ADDRESS
     // id WILL BE COMING FROM THE BASE MODEL OK.
     private String name;
+
+    @ManyToOne
     private Region region;
+
+    @OneToMany
     private List<Screen> screens;
 
 }

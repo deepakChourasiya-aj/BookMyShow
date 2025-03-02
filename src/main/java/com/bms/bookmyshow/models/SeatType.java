@@ -5,5 +5,4 @@ public enum SeatType {
     SILVER,
     PLATINUM,
     RECLINER,
-    MAHARAJA,
 }
