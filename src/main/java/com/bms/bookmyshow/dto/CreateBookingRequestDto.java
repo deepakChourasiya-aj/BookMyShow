@@ -10,5 +10,5 @@ import java.util.List;
 public class CreateBookingRequestDto {
     private Long userId;
     private Long showId; // can we skipped if we have show seat id;
-    private List<Long> showSeatId;
+    private List<Long> showSeatIds;
 }

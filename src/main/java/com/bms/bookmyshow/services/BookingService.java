@@ -4,9 +4,7 @@ import com.bms.bookmyshow.exceptions.SeatNotAvailableException;
 import com.bms.bookmyshow.exceptions.ShowNotFoundException;
 import com.bms.bookmyshow.exceptions.UserNotFoundException;
 import com.bms.bookmyshow.models.*;
-import com.bms.bookmyshow.repositories.ShowRepository;
-import com.bms.bookmyshow.repositories.ShowSeatRepository;
-import com.bms.bookmyshow.repositories.UserRepository;
+import com.bms.bookmyshow.repositories.*;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
@@ -18,14 +16,20 @@ import java.util.Optional;
 
 @Service
 public class BookingService {
+    private final BookingRepository bookingRepository;
     private UserRepository userRepository;
     private ShowRepository showRepository;
+    private ShowSeatTypeRepository showSeatTypeRepository;
     private ShowSeatRepository showSeatRepository;
+    private PriceCalculator priceCalculator;
 
-    public BookingService(UserRepository userRepository, ShowRepository showRepository) {
+    public BookingService(UserRepository userRepository, ShowRepository showRepository, ShowSeatRepository showSeatRepository , PriceCalculator priceCalculator, ShowSeatTypeRepository showSeatTypeRepository, BookingRepository bookingRepository) {
               this.userRepository = userRepository;
               this.showRepository = showRepository;
               this.showSeatRepository  = showSeatRepository;
+              this.priceCalculator = priceCalculator;
+              this.showSeatTypeRepository = showSeatTypeRepository;
+        this.bookingRepository = bookingRepository;
     }
 
 //    @Transactional(isolation = Isolation.SERIALIZABLE) // getting error because of this but we need it to work with
@@ -85,6 +89,8 @@ public class BookingService {
            booking.setUser(user);
            booking.setShow(show);
            booking.setShowSeats(showSeats);
-           booking.setAmount();// calculate the price using prize calculator.. class
+           booking.setAmount(priceCalculator.calculatePrice(show,showSeats));// calculate the price using prize calculator.. class
+
+           return bookingRepository.save(booking);
     }
 }
