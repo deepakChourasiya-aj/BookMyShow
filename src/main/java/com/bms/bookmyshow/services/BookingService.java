@@ -5,9 +5,9 @@ import com.bms.bookmyshow.exceptions.ShowNotFoundException;
 import com.bms.bookmyshow.exceptions.UserNotFoundException;
 import com.bms.bookmyshow.models.*;
 import com.bms.bookmyshow.repositories.*;
-import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.swing.text.html.Option;
 import java.util.Date;
@@ -34,6 +34,7 @@ public class BookingService {
 
 //    @Transactional(isolation = Isolation.SERIALIZABLE) // getting error because of this but we need it to work with
     // transactional manner research. it..
+    @Transactional(isolation = Isolation.SERIALIZABLE)
     public Booking createBooking(Long userId, List<Long> showSeatIds, Long showId) throws UserNotFoundException, ShowNotFoundException {
         /*
             1. GET THE USER WITH GIVEN USERID;
