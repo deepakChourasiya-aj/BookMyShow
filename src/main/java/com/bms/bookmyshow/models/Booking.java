@@ -38,7 +38,6 @@ public class Booking extends BaseModel{
  *   BOOKING ------ USER => M : 1 MANY TO ONE RELATION. LEFT SIDE WOULD THE MAIN CLASS THEN RIGHT SIDE WOULD BE RELATIONAL CLASS .
  *     m      <----  1
  *
- *
  *     1           1
  *   BOOKING   SHOW => M : 1 ONE SHOW CAN HAVE MANY BOOKINGS.
  *     M           1

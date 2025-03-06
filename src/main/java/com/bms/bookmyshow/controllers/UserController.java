@@ -20,7 +20,6 @@ public class UserController {
           responseDto.setUserId(user.getId());
           return responseDto;
     }
-
 //    Login..
     public LoginResponseDto login(LoginRequestDto loginRequestDto){
         LoginResponseDto responseDto = new LoginResponseDto();
